@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
-import { Sparkles, FileText, Users, LayoutGrid, Link2, Settings, LogOut, Zap } from 'lucide-react'
+import { Sparkles, FileText, Users, LayoutGrid, Link2, Settings, LogOut, Zap, GitBranch, BarChart2, CalendarDays, Briefcase, UserCog } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { createClient } from '@/lib/supabase/client'
 import { useEffect, useState } from 'react'
@@ -28,6 +28,36 @@ const navSections = [
       { label: 'All leads', href: '/dashboard/leads', icon: Users },
       { label: 'Pipeline', href: '/dashboard/leads/pipeline', icon: LayoutGrid },
       { label: 'Landing pages', href: '/dashboard/landing-pages', icon: Link2 },
+    ],
+  },
+  {
+    label: 'AUTOMATION',
+    items: [
+      { label: 'Sequences', href: '/dashboard/sequences', icon: GitBranch },
+    ],
+  },
+  {
+    label: 'INSIGHTS',
+    items: [
+      { label: 'Analytics', href: '/dashboard/analytics', icon: BarChart2 },
+    ],
+  },
+  {
+    label: 'SCHEDULE',
+    items: [
+      { label: 'Calendar', href: '/dashboard/calendar', icon: CalendarDays },
+    ],
+  },
+  {
+    label: 'CLIENTS',
+    items: [
+      { label: 'Clients', href: '/dashboard/clients', icon: Briefcase },
+    ],
+  },
+  {
+    label: 'AGENCY',
+    items: [
+      { label: 'Team', href: '/dashboard/team', icon: UserCog },
     ],
   },
 ]
