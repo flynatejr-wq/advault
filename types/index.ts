@@ -179,3 +179,158 @@ export const STAGE_LABELS: Record<LeadStage, string> = {
 export const STAGE_ORDER: LeadStage[] = [
   'new', 'contacted', 'qualified', 'quoted', 'closed_won', 'closed_lost'
 ]
+
+// ── Sequences ──────────────────────────────────────────────────────────────
+
+export type SequenceChannel = 'email' | 'sms'
+export type EnrollmentStatus = 'active' | 'paused' | 'completed' | 'unsubscribed'
+
+export interface Sequence {
+  id: string
+  user_id: string
+  name: string
+  product_type: LeadProductType | null
+  active: boolean
+  created_at: string
+}
+
+export interface SequenceStep {
+  id: string
+  sequence_id: string
+  step_number: number
+  delay_hours: number
+  channel: SequenceChannel
+  subject: string | null
+  body: string
+  ai_personalized: boolean
+  created_at: string
+}
+
+export interface SequenceEnrollment {
+  id: string
+  lead_id: string
+  sequence_id: string
+  current_step: number
+  status: EnrollmentStatus
+  enrolled_at: string
+  next_send_at: string | null
+  completed_at: string | null
+}
+
+export interface SequenceSend {
+  id: string
+  enrollment_id: string
+  step_id: string
+  lead_id: string
+  channel: SequenceChannel
+  subject: string | null
+  body: string
+  status: string
+  sent_at: string
+}
+
+// ── Appointments ───────────────────────────────────────────────────────────
+
+export type AppointmentStatus = 'confirmed' | 'cancelled' | 'completed' | 'no_show'
+
+export interface BookingSettings {
+  user_id: string
+  username: string
+  display_name: string
+  bio: string | null
+  call_duration_minutes: number
+  timezone: string
+  available_days: number[]
+  available_start_time: string
+  available_end_time: string
+  buffer_minutes: number
+  booking_notice_hours: number
+  active: boolean
+}
+
+export interface Appointment {
+  id: string
+  agent_user_id: string
+  lead_id: string | null
+  booker_name: string
+  booker_email: string
+  booker_phone: string | null
+  product_interest: string | null
+  notes: string | null
+  scheduled_at: string
+  duration_minutes: number
+  status: AppointmentStatus
+  cancellation_reason: string | null
+  created_at: string
+}
+
+// ── Team ───────────────────────────────────────────────────────────────────
+
+export type TeamRole = 'owner' | 'admin' | 'agent'
+export type TeamMemberStatus = 'pending' | 'active' | 'disabled'
+
+export interface TeamMember {
+  id: string
+  owner_user_id: string
+  member_user_id: string | null
+  email: string
+  role: TeamRole
+  status: TeamMemberStatus
+  invite_token: string | null
+  invited_at: string
+  accepted_at: string | null
+}
+
+// ── Client Portal ──────────────────────────────────────────────────────────
+
+export interface ClientPortal {
+  id: string
+  lead_id: string
+  user_id: string
+  portal_token: string
+  policy_type: string | null
+  policy_number: string | null
+  carrier: string | null
+  coverage_amount: string | null
+  monthly_premium: string | null
+  policy_start_date: string | null
+  notes: string | null
+  active: boolean
+  created_at: string
+}
+
+export interface ClientDocument {
+  id: string
+  portal_id: string
+  name: string
+  description: string | null
+  file_url: string
+  file_type: string | null
+  uploaded_at: string
+}
+
+// ── Analytics ──────────────────────────────────────────────────────────────
+
+export interface AnalyticsKPIs {
+  total_leads: number
+  leads_this_month: number
+  conversion_rate: number
+  avg_deal_value: number
+  total_revenue: number
+  hot_leads: number
+}
+
+export interface LeadsOverTime {
+  date: string
+  count: number
+}
+
+export interface LeadsByProduct {
+  product: string
+  count: number
+}
+
+export interface PipelineFunnel {
+  stage: string
+  count: number
+}
