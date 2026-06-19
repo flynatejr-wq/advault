@@ -23,6 +23,7 @@ export async function PATCH(request: Request, { params }: { params: { id: string
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
   const body = await request.json()
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { user_id: _uid, ...updateBody } = body
   const { data, error } = await supabase
     .from('sequences')
