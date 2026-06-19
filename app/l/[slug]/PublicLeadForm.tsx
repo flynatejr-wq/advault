@@ -77,7 +77,7 @@ export function PublicLeadForm({
     return (
       <div className="bg-bg-secondary border border-white/[0.08] rounded-card p-8 text-center">
         <div className="text-4xl mb-4">🎉</div>
-        <h2 className="text-text-primary text-xl font-semibold">You're all set!</h2>
+        <h2 className="text-text-primary text-xl font-semibold">You&apos;re all set!</h2>
         <p className="text-text-secondary mt-2">
           We received your information and will be in touch shortly.
         </p>
@@ -119,7 +119,7 @@ export function PublicLeadForm({
 
       {!productType && (
         <div>
-          <label className="text-label">I'm interested in</label>
+          <label className="text-label">I&apos;m interested in</label>
           <select
             className={selectClass}
             value={form.product_interest}

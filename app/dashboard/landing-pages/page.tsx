@@ -105,7 +105,7 @@ export default function LandingPagesPage() {
                     {page.product_type ? PRODUCT_LABELS[page.product_type] : 'All products'}
                   </td>
                   <td className="px-4 py-3">
-                    <Badge color={page.active ? 'success' : 'default'}>
+                    <Badge variant={page.active ? 'success' : 'default'}>
                       {page.active ? 'Active' : 'Inactive'}
                     </Badge>
                   </td>

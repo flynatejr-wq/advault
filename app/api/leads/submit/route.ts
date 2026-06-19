@@ -1,10 +1,10 @@
-import { createServerClient } from '@/lib/supabase/server'
+import { createClient } from '@/lib/supabase/server'
 import { NextResponse } from 'next/server'
 import { vetLead } from '@/lib/vet-lead'
 import type { LeadSubmitRequest } from '@/types'
 
 export async function POST(request: Request) {
-  const supabase = await createServerClient()
+  const supabase = createClient()
   const body = (await request.json()) as LeadSubmitRequest & { agent_user_id: string }
 
   if (!body.agent_user_id) {

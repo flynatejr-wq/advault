@@ -1,4 +1,4 @@
-import { createServerClient } from '@/lib/supabase/server'
+import { createClient } from '@/lib/supabase/server'
 import { NextResponse } from 'next/server'
 import { vetLead } from '@/lib/vet-lead'
 import type { LeadSubmitRequest } from '@/types'
@@ -7,7 +7,7 @@ export async function POST(
   _req: Request,
   { params }: { params: { id: string } }
 ) {
-  const supabase = await createServerClient()
+  const supabase = createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 

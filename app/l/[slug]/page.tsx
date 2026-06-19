@@ -1,4 +1,4 @@
-import { createServerClient } from '@/lib/supabase/server'
+import { createClient } from '@/lib/supabase/server'
 import { PublicLeadForm } from './PublicLeadForm'
 import { notFound } from 'next/navigation'
 
@@ -9,7 +9,7 @@ export default async function PublicLandingPage({
   params: { slug: string }
   searchParams: { utm_campaign?: string; utm_source?: string }
 }) {
-  const supabase = await createServerClient()
+  const supabase = createClient()
   const { data: page } = await supabase
     .from('landing_pages')
     .select('*')

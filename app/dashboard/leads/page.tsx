@@ -45,6 +45,7 @@ export default function LeadsPage() {
     [leads]
   )
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   function handleCreated(_lead: Lead) {
     refetch()
   }
